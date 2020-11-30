@@ -4,7 +4,6 @@ const ADDRESS = /^[A-Z]{1}([A-Za-z]{3,})$/;
 const ZIPCODE = /^[0-9]{6}$/;
 const PHONE_NUMBER = /^[0-9]{2,3}[: :]{1}[6-9]{1}[0-9]{9}$/;
 const EMAIL = /^[A-Za-z0-9]+([._%+-][0-9a-zA-Z]+)*@[A-Za-z0-9]+([.]([a-zA-Z]{2,3})*)+$/;
-let contactArray = new Array;
 
 class Contact{
 
@@ -130,9 +129,24 @@ function editContact(firstName){
     }
 }
 
+let deletContact=()=>{
+    if(contactArray.length==0){
+        console.log("No contact in the list");
+    }   
+    let deleteName = prompt("Enter contact firstname you want to delete: ");
+    let found = contactArray.find((contact)=>contact.firstName==deleteName);
+    if(found==undefined){
+        console.log("No such contact in Addressbook.");
+    }else{
+        contactArray = contactArray.filter((contacts)=>contacts.firstName!=deleteName);
+        console.log("Contact is deleleted in Addressbook.")
+    }
+}
+
+
 let choice = 0;
 do{
-    console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n0)Exit:");
+    console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n 4) Delete Contact \n0)Exit:");
     choice = Number(prompt("Enter your choice: "));
     if(choice == 1){
         addContact();
@@ -147,5 +161,8 @@ do{
     if(choice == 3){
         for(let i = 0; i < contactArray.length; i++)
             console.log(contactArray[i].toString(),"\n");
+    }
+    if(choice == 4){
+        deletContact();
     }
 }while(choice != 0);
