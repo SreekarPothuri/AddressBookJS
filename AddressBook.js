@@ -4,6 +4,7 @@ const ADDRESS = /^[A-Z]{1}([A-Za-z]{3,})$/;
 const ZIPCODE = /^[0-9]{6}$/;
 const PHONE_NUMBER = /^[0-9]{2,3}[: :]{1}[6-9]{1}[0-9]{9}$/;
 const EMAIL = /^[A-Za-z0-9]+([._%+-][0-9a-zA-Z]+)*@[A-Za-z0-9]+([.]([a-zA-Z]{2,3})*)+$/;
+let contactArray = new Array;
 
 class Contact{
 
@@ -146,7 +147,8 @@ let deletContact=()=>{
 
 let choice = 0;
 do{
-    console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n 4) Delete Contact \n0)Exit:");
+    console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n4) Delete Contact \n5) Find Number of Contacts in AddressBook");
+    console.log("0) Exit");
     choice = Number(prompt("Enter your choice: "));
     if(choice == 1){
         addContact();
@@ -164,5 +166,8 @@ do{
     }
     if(choice == 4){
         deletContact();
+    }
+    if(choice == 5){
+        console.log("Number of Contacts: "+contactArray.reduce(contacts => contacts+1,0));
     }
 }while(choice != 0);
