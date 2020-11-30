@@ -165,10 +165,29 @@ function countByCityOrState(place, countChoice){
     }
 }
 
+function sortContactByCityOrStateOrZip(inputSort){
+    if(inputSort == 1){
+        contactArray.sort(function(a, b) { return a.city.localeCompare(b.city)});
+        for(let i = 0; i < contactArray.length; i++)
+        console.log(contactArray[i].toString(),"\n");
+    }
+    if(inputSort == 2){
+        contactArray.sort(function(a, b) { return a.state.localeCompare(b.state)});
+        for(let i = 0; i < contactArray.length; i++)
+        console.log(contactArray[i].toString(),"\n");
+    }
+    if(inputSort == 3){
+        contactArray.sort(function(a, b) { return parseInt(a.zip) - parseInt(b.zip)});
+        for(let i = 0; i < contactArray.length; i++)
+        console.log(contactArray[i].toString(),"\n");
+    }
+}
+
 let choice = 0;
 do{
     console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n4) Delete Contact \n5) Find Number of Contacts in AddressBook");
-    console.log("6) Search By City or State \n7) View By City or State \n8) Count By City or State \n9) Sort Contacts Alphabetically \n0) Exit");
+    console.log("6) Search By City or State \n7) View By City or State \n8) Count By City or State \n9) Sort Contacts Alphabetically");
+    console.log("10) Sort Contacts By City,State or ZipCode \n0) Exit");
     choice = Number(prompt("Enter your choice: "));
     if(choice == 1){
         addContact();
@@ -230,5 +249,10 @@ do{
         contactArray.sort();
         for(let i = 0; i < contactArray.length; i++)
             console.log(contactArray[i].toString(),"\n");
+    }
+    if(choice == 10){
+        console.log("Sort Contacts based on \t1.) City \t2.) State \t3.) Zipcode")
+        let inputSort = parseInt(prompt("Enter your choice:  "))
+        sortContactByCityOrStateOrZip(inputSort);
     }
 }while(choice != 0);
