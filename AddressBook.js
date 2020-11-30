@@ -168,14 +168,14 @@ function countByCityOrState(place, countChoice){
 let choice = 0;
 do{
     console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n4) Delete Contact \n5) Find Number of Contacts in AddressBook");
-    console.log("6) Search By City or State \n7) View By City or State \n8) Count By City or State \n0) Exit");
+    console.log("6) Search By City or State \n7) View By City or State \n8) Count By City or State \n9) Sort Contacts Alphabetically \n0) Exit");
     choice = Number(prompt("Enter your choice: "));
     if(choice == 1){
         addContact();
     }
     if(choice == 2){
         if(contactArray.length==0){
-            console.log("No contacts in Addressbook.");
+            console.log("No contacts in Addressbook");
         }
         let userData = prompt("Enter the contact firstname which you want to edit: ");
         editContact(userData); 
@@ -225,5 +225,10 @@ do{
                     countByCityOrState(state, 2);
                     break;
         }
+    }
+    if(choice == 9){
+        contactArray.sort();
+        for(let i = 0; i < contactArray.length; i++)
+            console.log(contactArray[i].toString(),"\n");
     }
 }while(choice != 0);
