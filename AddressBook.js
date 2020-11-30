@@ -66,7 +66,7 @@ function addContact(){
     let FirstName = prompt("Enter Firstname: ");
     let LastName = prompt("Enter Lastname: ");
     if(contactArray.find((contact)=>(contact.firstName+" "+contact.lastName)==(FirstName+" "+LastName))){   
-        console.log("Name is already present in addressbook.");
+        console.log("Contact with same Name is already present in addressbook");
         return;
     }
     let Address = prompt("Enter Address: ");
@@ -78,7 +78,7 @@ function addContact(){
     try{
         let person = new Contact(FirstName,LastName,Address,City,State,Zip,PhoneNumber,EmailId);
         contactArray.push(person);
-        console.log("Contact is added. ");
+        console.log("Contact is added");
     }catch(Exception){
         console.log(Exception);
     }
