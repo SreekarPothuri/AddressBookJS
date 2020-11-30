@@ -155,11 +155,20 @@ function searchByCityOrState(place, choice){
     console.log("Contact: ",contacts);
 }
 
+function countByCityOrState(place, countChoice){
+    let contacts = new Array();
+    if(countChoice == 1){
+        console.log("Contacts in "+place+" city are: ",contactArray.filter(contact=>contact.city==place).reduce(contacts=>contacts+1,0));
+    }
+    if(countChoice == 2){
+        console.log("Contacts in "+place+" state are: ",contactArray.filter(contact=>contact.state==place).reduce(contacts=>contacts+1,0));
+    }
+}
 
 let choice = 0;
 do{
     console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n4) Delete Contact \n5) Find Number of Contacts in AddressBook");
-    console.log("6) Search By City or State \n7) View By City or State \n0) Exit");
+    console.log("6) Search By City or State \n7) View By City or State \n8) Count By City or State \n0) Exit");
     choice = Number(prompt("Enter your choice: "));
     if(choice == 1){
         addContact();
@@ -202,6 +211,18 @@ do{
                     break;
             case 2: let state = prompt("Enter the state name: ");
                     searchByCityOrState(state, 2);
+                    break;
+        }
+    }
+    if(choice == 8){
+        console.log("1) Count By City     2) Count By State");
+        let countChoice = Number(prompt("Enter your choice: "));
+        switch (countChoice){
+            case 1: let city = prompt("Enter the city name: ");
+                    countByCityOrState(city, 1);
+                    break;
+            case 2: let state = prompt("Enter the state name: ");
+                    countByCityOrState(state, 2);
                     break;
         }
     }
