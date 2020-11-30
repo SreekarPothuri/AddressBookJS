@@ -130,22 +130,22 @@ function editContact(firstName){
     }
 }
 
-let countEntry = 0;
+let choice = 0;
 do{
     console.log("Press: \n1) Add Contact \n2) Edit Contact \n3) View Contact \n0)Exit:");
-    countEntry = Number(prompt("Enter your choice: "));
-    if(countEntry == 1){
+    choice = Number(prompt("Enter your choice: "));
+    if(choice == 1){
         addContact();
     }
-    if(countEntry == 2){
+    if(choice == 2){
         if(contactArray.length==0){
             console.log("No contacts in Addressbook.");
         }
         let userData = prompt("Enter the contact firstname which you want to edit: ");
         editContact(userData); 
     }
-    if(countEntry == 3){
+    if(choice == 3){
         for(let i = 0; i < contactArray.length; i++)
             console.log(contactArray[i].toString(),"\n");
     }
-}while(countEntry != 0);
+}while(choice != 0);
